@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
 import { Center, HStack, Icon, Pressable, Text } from 'native-base';
-import { NavigateFunction, useNavigate, useLocation } from 'react-router-native';
+import { NavigateFunction, useNavigate } from 'react-router';
 import { ImageSourcePropType, Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -28,27 +27,12 @@ const tabs: Tab[] = [
 ];
 
 export const Navigation = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab, selectedTabLoaded] = useStorage<number>('ACTIVE_NAV_TAB', 0);
-
-  useEffect(() => {
-    if (location.pathname.includes('Dashboard')) {
-      setSelectedTab(2);
-    } else {
-      tabs.forEach((tab, idx) => {
-        if (tab.label && location.pathname.includes(tab.label)) {
-          setSelectedTab(idx);
-        }
-      });
-    }
-  }, [location]);
 
   if (!selectedTabLoaded) {
     return <Loader />;
   }
-
-  console.log({ selectedTab });
 
   return (
     <HStack

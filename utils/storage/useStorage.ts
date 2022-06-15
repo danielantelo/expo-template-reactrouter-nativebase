@@ -18,7 +18,11 @@ export const useStorage = <T>(key: string, defaultValue: T): [T, (newValue: T) =
   };
 
   useEffect(() => {
-    readItemFromStorage();
+    let isMounted = true;
+    if (isMounted) readItemFromStorage();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return [value, writeItemToStorage, loaded, removeItem];
