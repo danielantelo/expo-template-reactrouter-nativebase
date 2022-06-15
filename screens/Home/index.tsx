@@ -2,7 +2,7 @@ import { Heading } from 'native-base';
 
 import { Paragraph } from '../../components/Content';
 import { DefaultLayout } from '../../components/Layouts';
-import { Destination, Link, RoutingButton } from '../../utils';
+import { Destination, Link, RoutingButton } from '../../utils/routing';
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 {
   "name": "expo-template-reactrouter-nativebase",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "node_modules/expo/AppEntry.js",
   "packageManager": "yarn@3.2.1",
   "engines": {
@@ -28,6 +28,7 @@
     "react-native-countdown-circle-timer": "^3.0.9",
     "react-native-safe-area-context": "^4.3.1",
     "react-native-svg": "^12.3.0",
+    "react-native-use-stored-state": "^0.1.0",
     "react-native-web": "^0.17.0",
     "react-router-dom": "^6.3.0",
     "react-router-native": "^6.3.0"

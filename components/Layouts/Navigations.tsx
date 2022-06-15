@@ -2,8 +2,9 @@ import { Center, HStack, Icon, Pressable, Text } from 'native-base';
 import { NavigateFunction, useNavigate } from 'react-router';
 import { ImageSourcePropType, Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import useStoredState from 'react-native-use-stored-state';
 
-import { goToAbout, goToHome, useStorage } from '../../utils';
+import { goToAbout, goToHome } from '../../utils/routing';
 import { Loader } from '../Loader';
 
 interface Tab {
@@ -28,7 +29,7 @@ const tabs: Tab[] = [
 
 export const Navigation = () => {
   const navigate = useNavigate();
-  const [selectedTab, setSelectedTab, selectedTabLoaded] = useStorage<number>('ACTIVE_NAV_TAB', 0);
+  const [selectedTab, setSelectedTab, selectedTabLoaded] = useStoredState<number>('ACTIVE_NAV_TAB', 0);
 
   if (!selectedTabLoaded) {
     return <Loader />;

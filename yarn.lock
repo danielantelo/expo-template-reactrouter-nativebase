@@ -6526,6 +6526,7 @@ __metadata:
     react-native-countdown-circle-timer: ^3.0.9
     react-native-safe-area-context: ^4.3.1
     react-native-svg: ^12.3.0
+    react-native-use-stored-state: ^0.1.0
     react-native-web: ^0.17.0
     react-router-dom: ^6.3.0
     react-router-native: ^6.3.0
@@ -11018,6 +11019,18 @@ __metadata:
     react: "*"
     react-native: ">=0.50.0"
   checksum: 9bed890d030819ed650fdc84ae8127f78f72a28d81a160dd574729b81f237c85be6a5ff4a0951b4dd28bd2836189f18afffef1fd6447fb3b6537c7ecd23f08c2
+  languageName: node
+  linkType: hard
+
+"react-native-use-stored-state@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "react-native-use-stored-state@npm:0.1.0"
+  dependencies:
+    "@react-native-async-storage/async-storage": ^1.17.4
+  peerDependencies:
+    react: ">=17.0.0"
+    react-native: ">=0.67.0"
+  checksum: 0c162dd0a84738d5409c8357d8a38b9bf1a5a56130240ed925358349e4a7e31b1a1d92942b41b03caf090f2c890d760ab9ea97f8ce2628d2c323849c7d4a71a7
   languageName: node
   linkType: hard
 
