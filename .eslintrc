@@ -1,0 +1,24 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
+  ],
+  "plugins": ["react", "react-native"],
+  "ignorePatterns": ["web-build/*"],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": true,
+        "allowSeparatedGroups": true
+      }
+    ]
+  }
+}
