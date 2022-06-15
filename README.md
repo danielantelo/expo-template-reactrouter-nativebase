@@ -20,5 +20,5 @@ You should be running Node >=16 and yarn >=3
 Start a new expo project referencing this template:
 
 ```
-expo init --expo-template-reactrouter-nativebase
+expo init --template expo-template-reactrouter-nativebase
 ```
