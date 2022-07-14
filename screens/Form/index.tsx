@@ -4,6 +4,7 @@ import { useStoredReducer } from 'react-native-use-stored-state';
 import { Paragraph } from '../../components/Content';
 import { InlineField } from '../../components/Forms';
 import { DefaultLayout } from '../../components/Layouts';
+import { Loader } from '../../components/Loader';
 
 interface FormData {
   field1: string;
@@ -27,12 +28,11 @@ const dataReducer = (formData: FormData, action: { type: FormDataAction; payload
 };
 
 export default function Form() {
-  const [values, updateValues] = useStoredReducer<FormData, FormDataAction>('DATA_KEY', dataReducer, {
-    field1: '',
-    field2: '',
-    field3: '',
-    field4: '',
-  });
+  const [values, updateValues, valuesLoaded] = useStoredReducer<FormData, FormDataAction>('DATA_KEY', dataReducer);
+
+  if (!valuesLoaded) {
+    return <Loader />;
+  }
 
   return (
     <DefaultLayout>
@@ -47,7 +47,7 @@ export default function Form() {
         <Text>{`Field 1`}</Text>
         <Input
           width={50}
-          value={values?.field1}
+          value={values?.field1 ?? ''}
           onChangeText={(value: string) => {
             updateValues({ type: 'set_data', payload: { field: 'field1', value } });
           }}
@@ -57,7 +57,7 @@ export default function Form() {
         <Text>{`Field 2`}</Text>
         <Input
           width={50}
-          value={values?.field2}
+          value={values?.field2 ?? ''}
           onChangeText={(value: string) => {
             updateValues({ type: 'set_data', payload: { field: 'field2', value } });
           }}
@@ -67,7 +67,7 @@ export default function Form() {
         <Text>{`Field 3`}</Text>
         <Input
           width={50}
-          value={values?.field3}
+          value={values?.field3 ?? ''}
           onChangeText={(value: string) => {
             updateValues({ type: 'set_data', payload: { field: 'field3', value } });
           }}
@@ -77,7 +77,7 @@ export default function Form() {
         <Text>{`Field 4`}</Text>
         <Input
           width={50}
-          value={values?.field4}
+          value={values?.field4 ?? ''}
           onChangeText={(value: string) => {
             updateValues({ type: 'set_data', payload: { field: 'field4', value } });
           }}
