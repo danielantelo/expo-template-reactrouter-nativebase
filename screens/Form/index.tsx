@@ -27,7 +27,12 @@ const dataReducer = (formData: FormData, action: { type: FormDataAction; payload
 };
 
 export default function Form() {
-  const [values, updateValues] = useStoredReducer<FormData, FormDataAction>('DATA_KEY', dataReducer);
+  const [values, updateValues] = useStoredReducer<FormData, FormDataAction>('DATA_KEY', dataReducer, {
+    field1: '',
+    field2: '',
+    field3: '',
+    field4: '',
+  });
 
   return (
     <DefaultLayout>

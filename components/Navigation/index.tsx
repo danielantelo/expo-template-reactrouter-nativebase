@@ -41,7 +41,6 @@ export const Navigation = () => {
       alignItems={'center'}
       safeAreaBottom
       shadow={5}
-      paddingTop={2}
       //@ts-expect-error forced web styles for sticky nav
       style={Platform.OS === 'web' ? { position: 'fixed', bottom: 0, left: 0, width: '100%' } : {}}
     >
