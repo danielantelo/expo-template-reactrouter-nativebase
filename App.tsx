@@ -8,6 +8,7 @@ import { Loader } from './components/Loader';
 
 import About from './screens/About';
 import Home from './screens/Home';
+import Form from './screens/Form';
 
 export default function App() {
   const activeProgramLoaded = true;
@@ -21,6 +22,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={Destination.About} element={<About />} />
+            <Route path={Destination.Form} element={<Form />} />
           </Routes>
         </Router>
       )}

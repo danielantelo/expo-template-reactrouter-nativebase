@@ -1,10 +1,10 @@
 import { Center, HStack, Icon, Pressable, Text } from 'native-base';
-import { NavigateFunction, useNavigate } from 'react-router';
+import { NavigateFunction } from 'react-router';
 import { ImageSourcePropType, Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useStoredState } from 'react-native-use-stored-state';
 
-import { goToAbout, goToHome } from '../../utils/routing';
+import { goToAbout, goToForm, goToHome, useNavigate } from '../../utils/routing';
 
 interface Tab {
   label?: string;
@@ -23,6 +23,11 @@ const tabs: Tab[] = [
     label: 'About',
     icon: 'information',
     action: goToAbout,
+  },
+  {
+    label: 'Form',
+    icon: 'form-select',
+    action: goToForm,
   },
 ];
 

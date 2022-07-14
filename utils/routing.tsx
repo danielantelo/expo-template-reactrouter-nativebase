@@ -6,6 +6,7 @@ import { NativeRouter, Link as NativeLink, useNavigate as useNavigateNative } fr
 
 export enum Destination {
   About = '/About',
+  Form = '/Form',
   Home = '/',
 }
 
@@ -53,4 +54,7 @@ export const RoutingButton = ({
 
 export const goToAbout = (navigate: NavigateFunction) => navigate(Destination.About);
 
+export const goToForm = (navigate: NavigateFunction) => navigate(Destination.Form);
+
 export const goToHome = (navigate: NavigateFunction) => navigate(Destination.Home);
+
