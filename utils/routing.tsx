@@ -1,7 +1,7 @@
 import { Button, Text } from 'native-base';
 import { Platform } from 'react-native';
 import { NavigateFunction } from 'react-router';
-import { BrowserRouter, Link as DomLink, useNavigate as useNavigateDom } from 'react-router-dom';
+import { HashRouter, Link as DomLink, useNavigate as useNavigateDom } from 'react-router-dom';
 import { NativeRouter, Link as NativeLink, useNavigate as useNavigateNative } from 'react-router-native';
 
 export enum Destination {
@@ -10,7 +10,9 @@ export enum Destination {
 }
 
 export const Router = ({ children }: { children: React.ReactNode }) =>
-  Platform.OS === 'web' ? <BrowserRouter>{children}</BrowserRouter> : <NativeRouter>{children}</NativeRouter>;
+  Platform.OS === 'web' ? <HashRouter>{children}</HashRouter> : <NativeRouter>{children}</NativeRouter>;
+
+export const useNavigate = () => (Platform.OS === 'web' ? useNavigateDom() : useNavigateNative());
 
 export const Link = ({ to, label }: { to: Destination; label: string }) => {
   return Platform.OS === 'web' ? (
@@ -24,11 +26,23 @@ export const Link = ({ to, label }: { to: Destination; label: string }) => {
   );
 };
 
-export const RoutingButton = ({ children, to }: { children: React.ReactNode; to: Destination }) => {
-  const navigate = Platform.OS === 'web' ? useNavigateDom() : useNavigateNative();
+export const RoutingButton = ({
+  children,
+  to,
+  onPress,
+  ...rest
+}: {
+  children: React.ReactNode;
+  to: Destination | string;
+  secondary?: boolean;
+  onPress?: () => void;
+} & IButtonProps) => {
+  const navigate = useNavigate();
   return (
     <Button
+      {...rest}
       onPress={() => {
+        onPress && onPress();
         navigate(to);
       }}
     >

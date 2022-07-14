@@ -6,7 +6,7 @@ import { Destination, Link, RoutingButton } from '../../utils/routing';
 
 export default function About() {
   return (
-    <DefaultLayout showLogo showNav>
+    <DefaultLayout>
       <Heading>About</Heading>
       <Paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
