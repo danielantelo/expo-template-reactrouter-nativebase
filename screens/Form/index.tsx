@@ -1,4 +1,4 @@
-import { Heading, Input, Text } from 'native-base';
+import { Heading, Input, Select, Text } from 'native-base';
 import { useStoredReducer } from 'react-native-use-stored-state';
 
 import { Paragraph } from '../../components/Content';
@@ -11,6 +11,7 @@ interface FormData {
   field2: string;
   field3: string;
   field4: string;
+  gender: string;
 }
 
 type FormDataAction = 'set_data';
@@ -28,7 +29,7 @@ const dataReducer = (formData: FormData, action: { type: FormDataAction; payload
 };
 
 export default function Form() {
-  const [values, updateValues, valuesLoaded] = useStoredReducer<FormData, FormDataAction>('DATA_KEY', dataReducer);
+  const [values, dispatch, valuesLoaded] = useStoredReducer<FormData, FormDataAction>('DATA_KEY', dataReducer);
 
   if (!valuesLoaded) {
     return <Loader />;
@@ -49,7 +50,7 @@ export default function Form() {
           width={50}
           value={values?.field1 ?? ''}
           onChangeText={(value: string) => {
-            updateValues({ type: 'set_data', payload: { field: 'field1', value } });
+            dispatch({ type: 'set_data', payload: { field: 'field1', value } });
           }}
         />
       </InlineField>
@@ -59,9 +60,23 @@ export default function Form() {
           width={50}
           value={values?.field2 ?? ''}
           onChangeText={(value: string) => {
-            updateValues({ type: 'set_data', payload: { field: 'field2', value } });
+            dispatch({ type: 'set_data', payload: { field: 'field2', value } });
           }}
         />
+      </InlineField>
+      <InlineField>
+        <Text>{`Select`}</Text>
+        <Select
+          selectedValue={values?.gender || ''}
+          placeholder={'select...'}
+          minWidth={220}
+          onValueChange={(value: string) => {
+            dispatch({ type: 'set_data', payload: { field: 'gender', value } });
+          }}
+        >
+          <Select.Item value={'Male'} label={'Male'} />
+          <Select.Item value={'Female'} label={'Female'} />
+        </Select>
       </InlineField>
       <InlineField>
         <Text>{`Field 3`}</Text>
@@ -69,7 +84,7 @@ export default function Form() {
           width={50}
           value={values?.field3 ?? ''}
           onChangeText={(value: string) => {
-            updateValues({ type: 'set_data', payload: { field: 'field3', value } });
+            dispatch({ type: 'set_data', payload: { field: 'field3', value } });
           }}
         />
       </InlineField>
@@ -79,7 +94,7 @@ export default function Form() {
           width={50}
           value={values?.field4 ?? ''}
           onChangeText={(value: string) => {
-            updateValues({ type: 'set_data', payload: { field: 'field4', value } });
+            dispatch({ type: 'set_data', payload: { field: 'field4', value } });
           }}
         />
       </InlineField>
