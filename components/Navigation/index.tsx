@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useStoredState } from 'react-native-use-stored-state';
 
 import { goToAbout, goToForm, goToHome, useNavigate } from '../../utils/routing';
+import { useEffect } from 'react';
 
 interface Tab {
   label?: string;
@@ -32,8 +33,21 @@ const tabs: Tab[] = [
 ];
 
 export const Navigation = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const [selectedTab, setSelectedTab] = useStoredState<number>('ACTIVE_NAV_TAB');
+  const [selectedTab, setSelectedTab] = useStoredState<number>('ACTIVE_NAV_TAB', 0);
+
+  useEffect(() => {
+    if (location.pathname.includes('Dashboard')) {
+      setSelectedTab(2);
+    } else {
+      tabs.forEach((tab, idx) => {
+        if (tab.label && location.pathname.includes(tab.label)) {
+          setSelectedTab(idx);
+        }
+      });
+    }
+  }, [location]);
 
   return (
     <HStack

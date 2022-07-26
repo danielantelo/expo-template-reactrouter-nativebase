@@ -1,12 +1,13 @@
 import React from 'react';
-import { HStack, Text, VStack } from 'native-base';
+import { Box, HStack, Text, VStack } from 'native-base';
 
 interface Cell {
-  content?: string;
+  content?: string | number | React.ReactNode;
   fontWeight?: number | string;
   textAlign?: string;
-  width?: string;
+  width?: string | number;
   sideBorder?: boolean;
+  bottomBorder?: boolean;
 }
 
 export const Table = ({ children }: { children: React.ReactNode }) => <VStack>{children}</VStack>;
@@ -27,37 +28,41 @@ export const TableHeader = ({ headings }: { headings: Cell[] }) => {
           textAlign={heading.textAlign ?? 'center'}
           fontWeight={500}
           sideBorder={heading.sideBorder}
-        >
-          {heading.content}
-        </TableCell>
+          {...heading}
+        />
       ))}
     </HStack>
   );
 };
 
-export const TableCell = ({ width, textAlign, sideBorder, children, fontWeight }: { children: React.ReactNode } & Cell) => {
+export const TableCell = ({ width, textAlign, sideBorder, bottomBorder, content, fontWeight }: Cell) => {
   return (
-    <Text
-      fontSize={'xs'}
-      fontWeight={fontWeight}
-      width={width}
-      //@ts-expect-error forced string to native base textAlign prop
-      textAlign={textAlign}
-      borderRightWidth={sideBorder ? 1 : 0}
-      borderRightColor={'secondary.100'}
-    >
-      {children}
-    </Text>
+    <>
+      {typeof content === 'object' ? (
+        <Box width={width}>{content}</Box>
+      ) : (
+        <Text
+          fontSize={'xs'}
+          fontWeight={fontWeight}
+          width={width}
+          // @ts-expect-error force text align string
+          textAlign={textAlign}
+          borderRightWidth={sideBorder ? 1 : 0}
+          borderBottomWidth={bottomBorder ? 1 : 0}
+          borderRightColor={'secondary.100'}
+        >
+          {content}
+        </Text>
+      )}
+    </>
   );
 };
 
 export const TableRow = ({ children, values }: { children?: React.ReactNode; values?: Cell[] }) => {
   return (
     <HStack alignItems={'center'} justifyContent={'space-between'} marginBottom={1}>
-      {values?.map((item, id) => (
-        <TableCell key={`${id}-${item.content}`} width={`${100 / values.length}%`} {...item}>
-          {item.content}
-        </TableCell>
+      {values?.map((item: Cell, id: number) => (
+        <TableCell key={`cell-${id}`} width={item.width ?? `${100 / values.length}%`} {...item} />
       ))}
       {children}
     </HStack>
