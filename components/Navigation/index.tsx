@@ -1,5 +1,5 @@
 import { Center, HStack, Icon, Pressable, Text } from 'native-base';
-import { NavigateFunction } from 'react-router';
+import { NavigateFunction, useLocation } from 'react-router';
 import { ImageSourcePropType, Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useStoredState } from 'react-native-use-stored-state';
