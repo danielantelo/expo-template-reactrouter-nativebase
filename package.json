@@ -1,6 +1,6 @@
 {
   "name": "expo-template-reactrouter-nativebase",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "lint": "eslint --ext .js,.tsx,.ts . && npx madge --circular --extensions ts,tsx,js ./",
