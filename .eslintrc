@@ -5,20 +5,13 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "prettier",
+    "prettier"
   ],
   "plugins": ["react", "react-native"],
   "ignorePatterns": ["web-build/*"],
   "rules": {
-    "react/react-in-jsx-scope": 0,
-    "sort-imports": [
-      "error",
-      {
-        "ignoreDeclarationSort": true,
-        "ignoreMemberSort": true,
-        "allowSeparatedGroups": true
-      }
-    ]
+    "react/react-in-jsx-scope": 0
   }
 }

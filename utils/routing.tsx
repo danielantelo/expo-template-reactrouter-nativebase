@@ -1,4 +1,4 @@
-import { Button, Text } from 'native-base';
+import { Button, IButtonProps, Text } from 'native-base';
 import { Platform } from 'react-native';
 import { NavigateFunction } from 'react-router';
 import { HashRouter, Link as DomLink, useNavigate as useNavigateDom } from 'react-router-dom';
@@ -6,7 +6,6 @@ import { NativeRouter, Link as NativeLink, useNavigate as useNavigateNative } fr
 
 export enum Destination {
   About = '/About',
-  Form = '/Form',
   Home = '/',
 }
 
@@ -53,8 +52,6 @@ export const RoutingButton = ({
 };
 
 export const goToAbout = (navigate: NavigateFunction) => navigate(Destination.About);
-
-export const goToForm = (navigate: NavigateFunction) => navigate(Destination.Form);
 
 export const goToHome = (navigate: NavigateFunction) => navigate(Destination.Home);
 

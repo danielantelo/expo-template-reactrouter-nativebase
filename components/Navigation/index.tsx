@@ -1,16 +1,15 @@
+import { useEffect } from 'react';
 import { Center, HStack, Icon, Pressable, Text } from 'native-base';
 import { NavigateFunction, useLocation } from 'react-router';
-import { ImageSourcePropType, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useStoredState } from 'react-native-use-stored-state';
 
-import { goToAbout, goToForm, goToHome, useNavigate } from '../../utils/routing';
-import { useEffect } from 'react';
+import { goToAbout, goToHome, useNavigate } from '../../utils/routing';
 
 interface Tab {
-  label?: string;
-  icon?: string;
-  image?: ImageSourcePropType;
+  label: string;
+  icon: string;
   action: (navigate: NavigateFunction) => void;
 }
 
@@ -25,11 +24,6 @@ const tabs: Tab[] = [
     icon: 'information',
     action: goToAbout,
   },
-  {
-    label: 'Form',
-    icon: 'form-select',
-    action: goToForm,
-  },
 ];
 
 export const Navigation = () => {
@@ -38,40 +32,36 @@ export const Navigation = () => {
   const [selectedTab, setSelectedTab] = useStoredState<number>('ACTIVE_NAV_TAB', 0);
 
   useEffect(() => {
-    if (location.pathname.includes('Dashboard')) {
-      setSelectedTab(2);
-    } else {
-      tabs.forEach((tab, idx) => {
-        if (tab.label && location.pathname.includes(tab.label)) {
-          setSelectedTab(idx);
-        }
-      });
-    }
-  }, [location]);
+    tabs.forEach((tab: Tab, id: number) => {
+      if (tab.label && location.pathname.includes(tab.label)) {
+        setSelectedTab(id);
+      }
+    });
+  }, [location, setSelectedTab]);
 
   return (
     <HStack
-      bg={'primary.100'}
       alignItems={'center'}
+      bg={'primary.100'}
       safeAreaBottom
       shadow={5}
       //@ts-expect-error forced web styles for sticky nav
       style={Platform.OS === 'web' ? { position: 'fixed', bottom: 0, left: 0, width: '100%' } : {}}
     >
-      {tabs.map((tab, id) => (
+      {tabs.map((tab: Tab, id: number) => (
         <Pressable
           key={`nav-tab-${id}`}
-          opacity={selectedTab === id ? 1 : 0.5}
-          py={2}
           flex={1}
+          opacity={selectedTab === id ? 1 : 0.5}
+          paddingY={2}
           onPress={() => {
             setSelectedTab(id);
             tab.action(navigate);
           }}
         >
           <Center>
-            {tab.icon && <Icon mb={1} as={MaterialCommunityIcons} name={tab.icon} size={'md'} />}
-            {tab.label && <Text>{tab.label}</Text>}
+            <Icon name={tab.icon} as={MaterialCommunityIcons} size={'md'} />
+            <Text>{tab.label}</Text>
           </Center>
         </Pressable>
       ))}

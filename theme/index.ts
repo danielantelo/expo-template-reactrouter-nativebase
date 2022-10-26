@@ -1,7 +1,5 @@
 import { extendTheme } from 'native-base';
 
-import { Select } from './components/Select';
-
 export const nativeBaseTheme = extendTheme({
   fontSizes: {
     xs: 11,
@@ -9,8 +7,5 @@ export const nativeBaseTheme = extendTheme({
     md: 15,
     lg: 18,
     xl: 28,
-  },
-  components: {
-    Select,
   },
 });
