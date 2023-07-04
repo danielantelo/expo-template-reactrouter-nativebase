@@ -54,4 +54,3 @@ export const RoutingButton = ({
 export const goToAbout = (navigate: NavigateFunction) => navigate(Destination.About);
 
 export const goToHome = (navigate: NavigateFunction) => navigate(Destination.Home);
-

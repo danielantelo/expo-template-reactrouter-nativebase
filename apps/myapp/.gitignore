@@ -9,8 +9,8 @@
 # !/.yarn/cache
 #/.pnp.*
 
+__generated__
 node_modules
-tsconfig.tsbuildinfo
 .expo/
 dist/
 npm-debug.*

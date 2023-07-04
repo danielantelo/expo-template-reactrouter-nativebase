@@ -13,12 +13,12 @@ Also included:
 
 ## Pre-requisites
 
-You should be running Node >=18 and yarn >=3
+You should be running Node >=16 and yarn >=3
 
 ## Usage
 
 Start a new expo project referencing this template:
 
 ```
-npx create-expo-app --template expo-template-reactrouter-nativebase my-app
+expo init --template expo-template-reactrouter-nativebase
 ```

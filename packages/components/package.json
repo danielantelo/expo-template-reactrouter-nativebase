@@ -1,0 +1,16 @@
+{
+  "name": "@myapp/components",
+  "version": "1.0.0",
+  "dependencies": {
+    "react-native-use-stored-state": "^0.2.7"
+  },
+  "peerDependencies": {
+    "@expo/vector-icons": "^13.0.0",
+    "native-base": "^3",
+    "react": "^18",
+    "react-native": "^0",
+    "react-router": "^6",
+    "react-router-dom": "^6",
+    "react-router-native": "^6"
+  }
+}

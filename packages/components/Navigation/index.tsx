@@ -5,7 +5,7 @@ import { Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useStoredState } from 'react-native-use-stored-state';
 
-import { goToAbout, goToHome, useNavigate } from '../../utils/routing';
+import { goToAbout, goToHome, useNavigate } from '../Routing';
 
 interface Tab {
   label: string;

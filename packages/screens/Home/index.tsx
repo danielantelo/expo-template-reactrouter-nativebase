@@ -1,8 +1,6 @@
 import { Heading } from 'native-base';
 
-import { Paragraph } from '../../components/Content';
-import { DefaultLayout } from '../../components/Layouts';
-import { Destination, Link, RoutingButton } from '../../utils/routing';
+import { DefaultLayout, Destination, Link, Paragraph, RoutingButton } from '@myapp/components';
 
 export default function Home() {
   return (

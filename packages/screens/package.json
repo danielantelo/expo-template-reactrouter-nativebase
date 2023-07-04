@@ -1,0 +1,11 @@
+{
+  "name": "@myapp/screens",
+  "version": "1.0.0",
+  "dependencies": {
+    "@myapp/components": "workspace:*"
+  },
+  "peerDependencies": {
+    "native-base": "^3",
+    "react": "^18"
+  }
+}
