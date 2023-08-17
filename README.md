@@ -4,9 +4,6 @@ An alternative template to the default expo-template configured wiht `yarn works
 
 - `react-router` instead of react-navigation, with utils for ease of usage
 - `NativeBase` as the base of all ui components including wrappers to handle Paragraphs and Tables easier and consistently
-
-Also included:
-
 - `eslint and prettier and madge` pre-configured with recommended standards
 - `jest` for unit testing
 
