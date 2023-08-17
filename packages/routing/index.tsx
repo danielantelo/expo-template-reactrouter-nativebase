@@ -1,20 +1,16 @@
 import { Button, IButtonProps, Text } from 'native-base';
 import { Platform } from 'react-native';
-import { NavigateFunction } from 'react-router';
 import { HashRouter, Link as DomLink, useNavigate as useNavigateDom } from 'react-router-dom';
 import { NativeRouter, Link as NativeLink, useNavigate as useNavigateNative } from 'react-router-native';
 
-export enum Destination {
-  About = '/About',
-  Home = '/',
-}
+export * from 'react-router';
 
 export const Router = ({ children }: { children: React.ReactNode }) =>
   Platform.OS === 'web' ? <HashRouter>{children}</HashRouter> : <NativeRouter>{children}</NativeRouter>;
 
 export const useNavigate = () => (Platform.OS === 'web' ? useNavigateDom() : useNavigateNative());
 
-export const Link = ({ to, label }: { to: Destination; label: string }) => {
+export const Link = ({ to, label }: { to: string; label: string }) => {
   return Platform.OS === 'web' ? (
     <DomLink to={to}>
       <Text>{label}</Text>
@@ -33,7 +29,7 @@ export const RoutingButton = ({
   ...rest
 }: {
   children: React.ReactNode;
-  to: Destination | string;
+  to: string;
   secondary?: boolean;
   onPress?: () => void;
 } & IButtonProps) => {
@@ -50,7 +46,3 @@ export const RoutingButton = ({
     </Button>
   );
 };
-
-export const goToAbout = (navigate: NavigateFunction) => navigate(Destination.About);
-
-export const goToHome = (navigate: NavigateFunction) => navigate(Destination.Home);

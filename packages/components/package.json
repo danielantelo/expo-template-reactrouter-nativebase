@@ -5,12 +5,10 @@
     "react-native-use-stored-state": "^0.2.7"
   },
   "peerDependencies": {
-    "@expo/vector-icons": "^13.0.0",
+    "@expo/vector-icons": "^13",
+    "expo-react-router-wrapper": "workspace:*",
     "native-base": "^3",
     "react": "^18",
-    "react-native": "^0",
-    "react-router": "^6",
-    "react-router-dom": "^6",
-    "react-router-native": "^6"
+    "react-native": "^0"
   }
 }

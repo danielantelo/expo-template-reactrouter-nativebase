@@ -1,6 +1,7 @@
 import { Heading } from 'native-base';
+import { Link,  RoutingButton } from 'expo-react-router-wrapper';
 
-import { DefaultLayout, Destination, Link, Paragraph, RoutingButton } from '@myapp/components';
+import { DefaultLayout, Paragraph } from '@myapp/components';
 
 export default function Home() {
   return (
@@ -11,9 +12,9 @@ export default function Home() {
         aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
         aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        <Link to={Destination.About} label={'Link to About'} />
+        <Link to={'/About'} label={'Link to About'} />
       </Paragraph>
-      <RoutingButton to={Destination.About}>Routing Button to About</RoutingButton>
+      <RoutingButton to={'/About'}>Routing Button to About</RoutingButton>
     </DefaultLayout>
   );
 }

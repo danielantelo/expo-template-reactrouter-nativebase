@@ -1,28 +1,26 @@
 import { useEffect } from 'react';
 import { Center, HStack, Icon, Pressable, Text } from 'native-base';
-import { NavigateFunction, useLocation } from 'react-router';
 import { Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigate, NavigateFunction, useLocation } from 'expo-react-router-wrapper';
 import { useStoredState } from 'react-native-use-stored-state';
-
-import { goToAbout, goToHome, useNavigate } from '../Routing';
 
 interface Tab {
   label: string;
   icon: string;
-  action: (navigate: NavigateFunction) => void;
+  target: string;
 }
 
 const tabs: Tab[] = [
   {
     label: 'Home',
     icon: 'home',
-    action: goToHome,
+    target: '/',
   },
   {
     label: 'About',
     icon: 'information',
-    action: goToAbout,
+    target: '/About',
   },
 ];
 
@@ -56,7 +54,7 @@ export const Navigation = () => {
           paddingY={2}
           onPress={() => {
             setSelectedTab(id);
-            tab.action(navigate);
+            navigate(tab.target)
           }}
         >
           <Center>
