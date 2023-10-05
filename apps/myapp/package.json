@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
-    "@myapp/components": "workspace:*",
     "@myapp/screens": "workspace:*",
     "expo": "^49.0.7",
     "expo-react-router-wrapper": "workspace:*",

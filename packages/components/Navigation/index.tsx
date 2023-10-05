@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Center, HStack, Icon, Pressable, Text } from 'native-base';
 import { Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigate, NavigateFunction, useLocation } from 'expo-react-router-wrapper';
+import { useNavigate, useLocation } from 'expo-react-router-wrapper';
 import { useStoredState } from 'react-native-use-stored-state';
 
 interface Tab {
