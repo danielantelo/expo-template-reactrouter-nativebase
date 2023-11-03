@@ -1,6 +1,6 @@
 {
   "name": "expo-template-reactrouter-nativebase",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "workspaces": [
     "apps/*",
     "packages/*"
